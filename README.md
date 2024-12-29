@@ -9,7 +9,7 @@ https://github.com/user-attachments/assets/394fd2ac-8ffb-4710-844e-a4f643a82bbc
 
 
 ## Project Overview 
-Neaya Sethu is an AI-powered legal advisory chatbot that provides tailored legal advice. 
+Nyaya Sethu is an AI-powered legal advisory chatbot that provides tailored legal advice. 
 Users can:
 Upload documents for analysis to extract relevant legal insights.
 Upload images to identify issues and recommend legal solutions.
