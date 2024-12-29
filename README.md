@@ -108,6 +108,8 @@ This project introduces a legal advisory chatbot powered by Retrieval-Augmented 
 - **Flask**: Lightweight WSGI web application framework
 - **ChromaDB**: Vector database for AI embeddings
 - **JSON**: Data serialization and storage
+- **WebScrapping**: Used beautifull soup to extract all related case from web
+- **Groq**: LLM call to summarise contents
 
 
 
