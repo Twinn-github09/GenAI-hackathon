@@ -26,6 +26,32 @@ This project introduces a legal advisory chatbot powered by Retrieval-Augmented 
   <li><strong>User-Friendly Interface:</strong> A seamless and intuitive interface for interacting with the chatbot, uploading files, and receiving advice.</li>
 </ul>
 
+## Main Page
+
+![image](https://github.com/user-attachments/assets/c7456d01-4a8d-478f-a808-55dbd5129099)
+
+## Chat Feature 
+
+![image](https://github.com/user-attachments/assets/ac43f67f-eeee-4d90-91f6-342ae6b1713d)
+
+### Related Cases
+
+![image](https://github.com/user-attachments/assets/119fd56c-937a-4e49-91ae-0af6267b11ff)
+
+## Pdf Feature
+
+![image](https://github.com/user-attachments/assets/91dcb3c9-7dab-418c-8453-7280586a5dbd)
+
+## Image Feature
+
+![image](https://github.com/user-attachments/assets/9cdd2159-cc59-41e3-85f7-8e75bd82d6e4)
+
+## Case Help to file petition
+
+![image](https://github.com/user-attachments/assets/ca6dd3ed-11fe-4dce-8ae4-43cc4f581e3c)
+
+![image](https://github.com/user-attachments/assets/88a796f1-75c8-47cc-9490-7768125c4c30)
+
 
 ## Use Cases
 <ul>
