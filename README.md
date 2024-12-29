@@ -1,4 +1,4 @@
-# Neaya Sethu
+# Nyaya Sethu
 
 
 # Demo
