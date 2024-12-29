@@ -1,0 +1,129 @@
+/* Women's Theme Enhanced */
+.sidebar {
+    min-height: 100vh;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff0f6; /* Soft pink with a hint of lavender */
+    padding: 20px 25px;
+    border-right: 2px solid #f1d1d6; /* Soft pink accent border */
+    font-family: 'Poppins', sans-serif; /* Modern and elegant font */
+    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.sidebar .top {
+    margin-top: 20px;
+}
+
+.sidebar img {
+    width: 24px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gentle shadow around images */
+}
+
+.sidebar .menu {
+    display: block;
+    margin-left: 10px;
+    cursor: pointer;
+    color: #6d4b8e; /* Soft lavender/purple */
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+.sidebar .menu:hover {
+    color: #e91e63; /* Feminine pink on hover */
+    transform: scale(1.1); /* Slight scale effect for interactivity */
+}
+
+.sidebar .new-chat {
+    margin-top: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background-color: #f8c2e1; /* Soft lavender with a hint of pink */
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6d4b8e; /* Soft purple text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar .new-chat:hover {
+    background-color: #e91e63; /* Feminine pink */
+    color: white;
+    transform: scale(1.05); /* Gentle hover scale */
+}
+
+.sidebar .recent {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 2.0s;
+}
+
+.sidebar .recent-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6d4b8e; /* Soft purple */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sidebar .recent-entry {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    padding-right: 40px;
+    border-radius: 30px;
+    background-color: #f9d1e5; /* Soft pink background */
+    color: #282828;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar .recent-entry:hover {
+    background-color: #f4a1cc; /* Light pinkish hover effect */
+    transform: translateX(5px); /* Slight movement for interactivity */
+}
+
+.sidebar .bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .bottom-item {
+    padding-right: 10px;
+    cursor: pointer;
+    color: #6d4b8e; /* Soft purple */
+    font-weight: 600;
+    margin-top: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar .bottom-item:hover {
+    color: #e91e63; /* Feminine pink */
+    transform: scale(1.1); /* Slight scale effect */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+/* Animation for Fade-in Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
