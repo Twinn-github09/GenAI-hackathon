@@ -4,7 +4,10 @@
 # Demo
 
 
-https://github.com/user-attachments/assets/394fd2ac-8ffb-4710-844e-a4f643a82bbc
+
+https://github.com/user-attachments/assets/b282f182-4d70-4e93-a7dd-a15a6237668c
+
+
 
 
 
@@ -14,8 +17,8 @@ Users can:
 Upload documents for analysis to extract relevant legal insights.
 Upload images to identify issues and recommend legal solutions.
 Ask legal questions and receive contextual advice.
+![Vector embedding (1)](https://github.com/user-attachments/assets/3b80f7fb-a7bb-4c03-909f-b2e61e550834)
 
-![Vector embedding](https://github.com/user-attachments/assets/b3a6e820-b9fa-417f-87e3-5b02f8dfb1e9)
 
 
 ## Project Abstract
@@ -34,30 +37,37 @@ This project introduces a legal advisory chatbot powered by Retrieval-Augmented 
 </ul>
 
 ## Main Page
+![Screenshot 2025-01-18 102940](https://github.com/user-attachments/assets/f718f159-85bf-4fc7-a2e6-23f786a304f8)
 
-![image](https://github.com/user-attachments/assets/c7456d01-4a8d-478f-a808-55dbd5129099)
 
 ## Chat Feature 
 
-![image](https://github.com/user-attachments/assets/ac43f67f-eeee-4d90-91f6-342ae6b1713d)
+![Screenshot 2025-01-18 100111](https://github.com/user-attachments/assets/a3136036-931e-4d2a-b4f4-57b1e8a8f745)
 
 ### Related Cases
+![Screenshot 2025-01-18 100435](https://github.com/user-attachments/assets/e2f7e28a-9248-447b-98a6-72e0283cab62)
 
-![image](https://github.com/user-attachments/assets/119fd56c-937a-4e49-91ae-0af6267b11ff)
 
 ## Pdf Feature
+![Screenshot 2025-01-18 102332](https://github.com/user-attachments/assets/252cde78-c5f6-4d2a-89a4-93de6580fb8e)
 
-![image](https://github.com/user-attachments/assets/91dcb3c9-7dab-418c-8453-7280586a5dbd)
 
 ## Image Feature
+![Screenshot 2025-01-18 100339](https://github.com/user-attachments/assets/3c050e8d-a031-4485-a692-f03a7bdde2e5)
 
-![image](https://github.com/user-attachments/assets/9cdd2159-cc59-41e3-85f7-8e75bd82d6e4)
 
 ## Case Help to file petition
 
-![image](https://github.com/user-attachments/assets/ca6dd3ed-11fe-4dce-8ae4-43cc4f581e3c)
+![Screenshot 2025-01-18 100518](https://github.com/user-attachments/assets/2ba1b497-2b15-474d-9615-0265dbc3d12a)
 
-![image](https://github.com/user-attachments/assets/88a796f1-75c8-47cc-9490-7768125c4c30)
+![Screenshot 2025-01-18 103045](https://github.com/user-attachments/assets/2330013e-4ba1-49fc-9c64-fdedbbc27b6b)
+
+## Legal term explainer
+
+![Screenshot 2025-01-18 100944](https://github.com/user-attachments/assets/1c5a8ec9-7aaa-4ae3-b72a-2909fa71d251)
+
+## Lawyers location
+![Screenshot 2025-01-17 182906](https://github.com/user-attachments/assets/7d4d3571-cb69-453c-b752-786ec821f51c)
 
 
 ## Use Cases
@@ -143,4 +153,5 @@ npm run dev
 - Suthekshan k
 - Mathivanan S
 - Renny Harlin
+
 
