@@ -1,0 +1,313 @@
+/* General Body Styling */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff1e6); /* Subtle pink-orange gradient */
+  color: #4a4a4a;
+  line-height: 1.8;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Home Container */
+.home-container {
+  
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+
+
+/* Video Section */
+.video-container {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.video-container h2 {
+  color: #d87093;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.video-container video {
+  max-width: 100%;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.video-container video:hover {
+  transform: scale(1.05);
+}
+
+/* Keyframe Animation for Scrolling Features */
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feature-card {
+      width: calc(50% - 20px);
+  }
+
+  .features-marquee-content {
+      flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+      width: 100%;
+  }
+}
+
+/* Key Features Section */
+.key-features {
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.key-features h2 {
+  text-align: center;
+  color: #d87093;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.features-marquee {
+  overflow: hidden;
+  width: 100%; /* Ensuring it takes the full width */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.features-marquee-content {
+  display: flex;
+  gap: 20px;
+  animation: scroll 20s linear infinite;
+  min-width: 100%; /* Ensuring content is wide enough */
+}
+
+.feature-card {
+  background-color: rgba(255, 240, 245, 0.8);
+  backdrop-filter: blur(15px);
+  width: 500px;  
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover {
+  background-color: rgba(255, 192, 203, 0.9);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #d87093;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Gender Equality Section */
+.gender-equality {
+  background: #fff0f5;
+  border-radius: 25px;
+  padding: 40px 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+  text-align: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gender-equality:hover {
+  background-color: #fbe9f1; /* Slightly darker pink on hover */
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15); /* Increase shadow for hover effect */
+}
+
+.gender-equality h2 {
+  color: #d87093;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.gender-equality h2:hover {
+  color: #c33d72; /* Slight change in color on hover */
+}
+
+.gender-equality p{
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1.0rem;
+  color: #555;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.gender-equality ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #555;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.gender-equality ul li {
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 30px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.gender-equality ul li:hover {
+  color: #d87093;
+  transform: translateX(10px); /* Subtle shift to the right on hover */
+}
+
+.gender-equality ul li::before {
+  content: '\2022';
+  color: #d87093;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5rem;
+}
+
+.gender-equality ul li:nth-child(even)::before {
+  color: #c33d72; /* Change bullet color for even list items */
+}
+
+/* Header Section */
+.home-header {
+  text-align: center;
+
+  background: linear-gradient(45deg, rgba(255, 182, 193, 0.9), rgba(255, 223, 211, 0.9));
+  padding: 100px 20px;
+  border-radius: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+
+
+.home-header h1 {
+  font-size: 4rem;
+  color: #d6b4b4;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-header p {
+  font-size: 1.6rem;
+  color: #ffffff;
+  font-style: italic;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Section */
+.home-header {
+  text-align: center;
+  background: linear-gradient(45deg, rgb(224, 217, 218), rgba(255, 223, 211, 0.9));
+  border-radius: 25px;
+  margin-bottom: 50px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-image: url('https://img.freepik.com/premium-photo/legal-law-justice-concept_218381-34437.jpg?semt=ais_hybrid');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 393px;
+
+}
+.home-header h1 {
+  font-size: 3.5rem;
+  color: #ffffff;  /* Rich pink for the heading */
+  margin-top: 0px; /* Adjusted to move the heading up */
+  margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+  animation: fadeInUp 1s ease-out;
+}
+
+.home-header p {
+  font-size: 1.6rem;
+  color: #fd4881;  /* Light gray for the paragraph */
+  font-style: italic;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

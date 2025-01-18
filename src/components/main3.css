@@ -1,0 +1,1241 @@
+/* Base Colors */
+:root {
+    --main-bg-color: #f8f0f5; /* Soft pastel pink background */
+    --card-bg-color: #fbe7f7; /* Light pink card background */
+    --text-color: #6a4f4d; /* Soft brown for text */
+    --primary-color: #ff6f61; /* Warm coral for accents */
+    --secondary-color: #f5c2d8; /* Light blush for secondary accents */
+    --hover-color: #f8c8d8; /* Subtle hover effect */
+    --border-color: #d8a5b4; /* Light pinkish border */
+    --button-color: #e7a1c4; /* Button background color */
+    --button-text-color: #fff; /* Button text color */
+    --input-bg-color: #ffffff; /* Input background white */
+    --main-font-family: 'Arial', sans-serif;
+    --heading-font-family: 'Georgia', serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.2;
+    --background-color: #f6e3ef;
+}
+.main{
+    flex: 1;
+    max-height: 90vh;
+    padding-bottom: 15vh;
+    position: relative;
+}
+/* Overall Page Styling */
+
+body {
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: var(--spacing-unit);
+}
+
+/* Header/Navigation */
+.main .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    padding: 15px 25px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f78fb3, #f3a683);
+    border-bottom: 3px solid #f8a5c2;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.main .nav p {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.main .nav img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background: #f3a683;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main .nav img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.main-container{
+    max-width: 900px;
+    margin: auto;
+}
+
+/* Greeting */
+.main-container .greet {
+    margin: 50px 0;
+    font-size: 45px;
+    color: var(--text-color);
+    font-weight: 500;
+    text-align: center;
+}
+
+.main .greet span {
+    background: -webkit-linear-gradient(16deg, var(--primary-color), #f9a8d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.main .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.main .card {
+    height: 200px;
+    padding: 15px;
+    background-color: var(--card-bg-color);
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main .card img {
+    width: 35px;
+    padding: 5px;
+    position: absolute;
+    border-radius: 20px;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+}
+
+.main .card p {
+    color: #6a4f4d;
+    font-size: 17px;
+}
+
+.main .card:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+}
+
+.main-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 900px;
+    padding: 0px 20px;
+    margin: auto;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #f9c9d4; /* Soft pink background */
+    padding: 12px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.search-box:hover {
+    background-color: #f4b6d8; /* Slightly deeper pink on hover */
+}
+
+.search-box img {
+    width: 26px; /* Slightly larger icon */
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth icon scaling on hover */
+}
+
+.search-box img:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.search-box input {
+    flex: 1;
+    background: #ffe1ec; /* Light peachy pink */
+    outline: 0;
+    padding: 8px;
+    font-size: 18px;
+    color: #6c4f57; /* Soft brown for text */
+    border: none;
+    border-radius: 25px; /* Rounded input */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    transition: all 0.3s ease; /* Smooth focus transition */
+}
+
+.search-box input:focus {
+    background: #fbe2f5; /* Lighter pink when focused */
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1); /* Glow effect on focus */
+}
+
+.search-box div {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* Bottom Information */
+.main .bottom-info {
+    font-size: 14px;
+    margin: 20px auto;
+    text-align: center;
+    font-weight: 400;
+    color: #b7a7a0; /* Softer text color */
+    line-height: 1.5; /* Improve readability */
+    font-family: 'Poppins', sans-serif; /* Elegant font for modern look */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .search-box {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-box input {
+        padding: 10px;
+    }
+}
+
+
+/* Bottom Information */
+.main .bottom-info {
+    font-size: 13px;
+    margin: 15px auto;
+    text-align: center;
+    font-weight: 300;
+    color: #b3a8a3;
+}
+
+/* Result Section */
+.result {
+    padding: 0px 5%;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.result::-webkit-scrollbar {
+    display: none;
+}
+
+.result-title {
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.result img {
+    width: 30px;
+    border-radius: 50%;
+}
+
+.result-data {
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    font-size: 30px;
+}
+
+.result-data p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* File Card */
+.file-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.file-details {
+    flex: 1;
+}
+
+.file-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.file-size {
+    font-size: 14px;
+    color: #666;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.preview-button,
+.remove-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.preview-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.remove-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Results Layout */
+.results-container {
+    display: flex;
+    gap: 24px;
+    padding: 20px;
+    height: calc(100vh - 200px);
+    overflow: hidden;
+}
+
+/* Main Response Section */
+.main-response {
+    flex-grow: 1;
+    max-width: 800px;
+    overflow-y: auto;
+}
+
+.response-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.user-query {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-query img {
+    width: 32px;
+    height: 32px;
+}
+
+.user-query p {
+    font-weight: 500;
+    color: #333;
+    font-size: 20px;
+}
+
+.bot-response {
+    display: flex;
+    gap: 12px;
+    line-height: 25px;
+    
+}
+
+
+
+.bot-response img {
+    width: 32px;
+    height: 32px;
+}
+
+.response-content {
+    flex-grow: 1;
+}
+
+/* Legal Context Box */
+.legal-context {
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #f0f7ff;
+    border-radius: 8px;
+}
+
+.legal-context h3 {
+    color: #2c5282;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Related Cases Sidebar */
+.related-cases-sidebar {
+    width: 380px;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.related-cases-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+}
+
+.related-cases-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.case-item {
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.case-item h4 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.case-link {
+    display: inline-block;
+    color: #3182ce;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.case-link:hover {
+    text-decoration: underline;
+}
+
+.case-summary {
+    font-size: 14px;
+    color: #4a5568;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .results-container {
+        flex-direction: column;
+    }
+    
+    .related-cases-sidebar {
+        width: 100%;
+    }
+}
+
+/* Scrollbar Styling */
+.main-response::-webkit-scrollbar,
+.related-cases-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-response::-webkit-scrollbar-track,
+.related-cases-sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.main-response::-webkit-scrollbar-thumb,
+.related-cases-sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.main-response::-webkit-scrollbar-thumb:hover,
+.related-cases-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Response Container */
+.results-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    line-height: var(--line-height-base);
+    
+}
+
+.response-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fce4ec;  /* Soft pink background */
+    padding: 50px;
+    border-radius: 8px;
+    line-height: var(--line-height-base);
+}
+
+.user-query {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-query p {
+    color: #6a1b9a;  /* Deep purple for the query */
+    font-weight: bold;
+}
+
+.bot-response {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.response-content {
+    font-size: 16px;
+    color: #000000;
+    padding: 20px;
+    border-radius: 20px;
+    font: 1em ;
+}
+
+/* Loader */
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #e91e63;  /* Pink spinner */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    background-color: #e91e63;  /* Soft pink button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background-color: #d81b60;  /* Darker pink on hover */
+}
+
+/* Related Cases Sidebar */
+.related-cases-sidebar {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fce4ec;  /* Soft pink background */
+    border-radius: 8px;
+    height: 300px;  /* Fixed height for scrolling */
+    overflow-y: auto;  /* Scrollable */
+}
+
+.related-cases-sidebar h3 {
+    font-size: 20px;
+    color: #6a1b9a;  /* Deep purple for header */
+    margin-bottom: 10px;
+}
+
+.cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.case-item h4 {
+    font-size: 16px;
+    color: #6a1b9a;
+}
+
+.case-item .case-link {
+    color: #e91e63;  /* Soft pink links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.case-item .case-link:hover {
+    text-decoration: underline;
+}
+
+.case-summary {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* File Card */
+.file-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8bbd0;  /* Light pink background */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #333;
+}
+
+.file-size {
+    font-size: 12px;
+    color: #666;
+}
+
+.file-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.file-actions button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-actions button:hover {
+    background-color: #d81b60;
+}
+
+/* Search Box */
+.search-box {   
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-box input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 0.5px solid #ccc;
+    font-size: 16px;
+    
+}
+
+.icon-buttons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.icon-buttons img:hover {
+    opacity: 0.8;
+}
+
+/* Related Cases Sidebar with Glassmorphism */
+.related-cases-sidebar {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);  /* Semi-transparent white background */
+    backdrop-filter: blur(10px);  /* Blur effect */
+    border-radius: 12px;
+    height: 300px;  /* Fixed height for scrolling */
+    overflow-y: auto;  /* Scrollable */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Light shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.2);  /* Slight border to enhance glass effect */
+}
+
+.related-cases-sidebar h3 {
+    font-size: 20px;
+    color: #6a1b9a;  /* Deep purple for header */
+    margin-bottom: 10px;
+}
+
+.cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.case-item h4 {
+    font-size: 16px;
+    color: #6a1b9a;
+}
+
+.case-item .case-link {
+    color: #e91e63;  /* Soft pink links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.case-item .case-link:hover {
+    text-decoration: underline;
+}
+
+.case-summary {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Related Cases Sidebar with Glassmorphism Effect */
+.related-cases-sidebar {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 0;
+    padding: 20px;
+    background: rgba(243, 236, 236, 0.3);  /* Semi-transparent white */
+    backdrop-filter: blur(10px);  /* Blur the background behind the sidebar */
+    border-radius: 12px;
+    height: 80%;  /* Set height for the sidebar */
+    width: 70%;   /* Set width for the sidebar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);  /* Subtle shadow */
+    border: 1px solid rgba(255, 255, 255, 0.3);  /* Border to enhance the effect */
+    z-index: 9999; /* Ensure it's on top of other content */
+    display: none; /* Initially hidden */
+    overflow-y: auto;  /* Scrollable content */
+}
+
+/* Background blur when sidebar is active */
+.blur-background {
+    filter: blur(100px);  /* Blur the entire page */
+    pointer-events: none;
+     /* Disable interactions with background while overlay is active */
+}
+
+
+/* Ensure the sidebar remains clear of the blur */
+.unblur-sidebar{
+    filter: none; /* Disable blur effect for the sidebar */
+    pointer-events: auto;
+    /* Enable interactions with the sidebar */
+}
+
+
+.related-cases-sidebar h3 {
+    font-size: 20px;
+    color: #6a1b9a;  /* Purple header */
+    margin-bottom: 10px;
+    
+}
+
+.cases-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.case-item h4 {
+    padding: auto;
+    font-size: 16px;
+    color: #6a1b9a;
+}
+
+.case-item{
+    padding: 50px;
+}
+.case-item .case-link {
+    color: #e91e63;  /* Soft pink for links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.case-item .case-link:hover {
+    text-decoration: underline;
+}
+
+.case-summary {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+.back-button {
+    position: fixed;
+    padding: 10px 20px;
+    background-color: #df33bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.back-button:hover {
+    background-color: #da8ed7;
+}
+
+
+.welcome-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  
+  .get-help-button
+  {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .analyze-doc-button ,
+  .analyze-image-button
+  {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .analyze-doc-button {
+    background-color: rgb(229, 148, 223);
+    color: white;
+    border: none;
+    
+  }
+  
+  .get-help-button {
+    background: linear-gradient(135deg, var(--primary-color), #c463d7);
+    color: white;
+    border: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .get-help-button:hover {
+    background: linear-gradient(135deg, #a54caf, var(--primary-color));
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .get-help-button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .analyze-image-button {
+    /* Copy the styles from analyze-doc-button */
+    background-color: rgb(243, 210, 240);
+    color: rgb(0, 0, 0);
+    border: 1px solid #ebcaee;
+   
+  }
+  
+  .welcome-buttons {
+    gap: 10px;
+  }
+
+  .help-form-container {
+    max-width: 600px;
+    margin: 8rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .help-form-container h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .help-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+  }
+  
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+  
+  .submit-button,
+  .cancel-button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .submit-button {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+  }
+  
+  .submit-button:hover {
+    background-color: #3182ce;
+  }
+  
+  .cancel-button {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border: none;
+  }
+  
+  .cancel-button:hover {
+    background-color: #cbd5e0;
+  }
+
+  .help-form-container {
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .form-heading {
+    color: #ff80ab; /* Pastel pink */
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .help-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.0rem;
+  }
+  
+  .form-group label {
+    font-size: 1rem;
+    color: #6a1b9a; /* Deep purple */
+    font-weight: bold;
+  }
+  
+  .form-input,
+  .form-textarea {
+    background: rgba(255, 255, 255, 0.6);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.5); /* Pink glow */
+  }
+  
+  .submit-button,
+  .cancel-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .submit-button {
+    background: linear-gradient(90deg, #ff80ab, #ff4081); /* Gradient pink */
+    color: white;
+  }
+  
+  .submit-button:hover {
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  }
+  
+  .cancel-button {
+    background: transparent;
+    border: 2px solid #ff80ab;
+    color: #ff80ab;
+  }
+  
+  .cancel-button:hover {
+    background: #ff80ab;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .help-form-container {
+      padding: 1.5rem;
+    }
+  }
+  
+  .main {
+    background-color: var(--main-bg-color);
+  }
+
+  .analyze-doc-button,
+.analyze-image-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px; /* Adjust for a good touch target */
+}
+
+.analyze-doc-button img,
+.analyze-image-button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.analyze-doc-button:hover img,
+.analyze-image-button:hover img {
+  filter: brightness(1.2); /* Add a hover effect */
+}
+
+
+/* Bottom Information */
+.main .bottom-info {
+    font-size: 12px;
+    margin: 10px;
+    text-align: center;
+    font-weight: 400;
+    color: #b7a7a0; /* Softer text color */
+    line-height: 1.0;/* Improve readability */
+    font-family: 'Poppins', sans-serif; /* Elegant font for modern look */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .search-box {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-box input {
+        padding: 10px;
+    }
+}
+
+
+.back-button-main {
+    /* Button Styling */
+    position: fixed;
+    padding: 12px 24px;
+    background-color: #f8a1e6; /* Soft pink background */
+    color: white;
+    border: none;
+    border-radius: 30px; /* Rounded edges for a smoother look */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    transition: all 0.3s ease;
+    top: 100px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button-main:hover {
+    background-color: #f50057; /* Vibrant pink on hover */
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.back-button-main:active {
+    background-color: #da8ed7; /* Soft pink on active state */
+    transform: translateY(-2px); /* Slight press effect */
+}
+
+/* Optional: Add an icon or arrow for visual appeal */
+.back-button-main::before {
+    content: '←'; /* Left arrow */
+    font-size: 20px;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.main{    
+  height: 800px;
+   width: 100%;
+   position:absolute;
+
+}
+
+.main-bottom {    
+    position: absolute;
+    width: 100%;
+    max-width: 900px;
+    padding: 0px 20px;
+    margin: auto;
+}
+
+/* Lawyer finder styles */
+.lawyers-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+.lawyer-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lawyer-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.lawyer-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.lawyer-address {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.lawyer-status {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.lawyer-status.open {
+    color: #22c55e;
+}
+
+.lawyer-status.closed {
+    color: #ef4444;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+/* Rating stars */
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    font-size: 18px;
+}
+
+.star.filled {
+    color: #fbbf24;
+}
+
+.star.empty {
+    color: #d1d5db;
+}

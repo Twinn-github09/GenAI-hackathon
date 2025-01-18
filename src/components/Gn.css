@@ -1,0 +1,373 @@
+/* Scoped styles for GenderEqualityEditor2 component */
+
+/* Editor container */
+.gender-equality-editor2 .editor-container2 {
+    background: #f5f2f6;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    overflow: hidden; /* Ensure the container doesn't overflow */
+}
+
+.gender-equality-editor2 .editor-heading2 {
+    color: #f36f91;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gender-equality-editor2 .editor-form2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.gender-equality-editor2 .editor-textarea-container2 {
+    margin-bottom: 20px;
+}
+
+.gender-equality-editor2 .editor-label2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3d3d3d;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.gender-equality-editor2 {
+    font-size: 0.9rem;
+    color: #201d1d;
+    margin-left: 5px;
+}
+
+.gender-equality-editor2 .editor-textarea2 {
+    width: 100%;
+    height: 140px;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    resize: vertical;
+}
+
+.gender-equality-editor2 .editor-actions2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender-equality-editor2 .submit-button2 {
+    background-color: #f36f91;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.gender-equality-editor2 .submit-button2:hover {
+    background-color: #f04e6c;
+}
+
+.gender-equality-editor2 .cancel-button2 {
+    background-color: #f4ebeb;
+    color: #ff16b1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.gender-equality-editor2 .cancel-button2:hover {
+    background-color: #f85a37;
+}
+
+.gender-equality-editor2 .error-message2 {
+    color: #f04e6c;
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Suggested text container */
+.gender-equality-editor2 .suggested-text-container2 {
+    background: #f5f2f6;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Ensure content can scroll if it's too long */
+    max-height: 570px; /* Limit the height */
+}
+
+.gender-equality-editor2 .suggested-text-heading2 {
+    color: #f36f91;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Styling for the suggested text content */
+.gender-equality-editor2 .suggested-text-content2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 350px; /* Ensures the suggested text area does not grow too large */
+    overflow-y: auto; /* Allows scrolling for large content */
+    white-space: pre-wrap; /* Ensures text wraps correctly */
+}
+
+/* Optional: Adding a monospace font for better readability of preformatted text */
+.gender-equality-editor2 .suggested-text-content2 pre {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    color: #555;
+    word-wrap: break-word;
+}
+
+/* Back button styling */
+.gender-equality-editor2 .back-button2 {
+    background-color: #f36f91;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.gender-equality-editor2 .back-button2:hover {
+    background-color: #f04e6c;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+    .gender-equality-editor2 .editor-container2, 
+    .gender-equality-editor2 .suggested-text-container2 {
+        padding: 15px;
+        margin: 20px;
+    }
+
+    .gender-equality-editor2 .submit-button2, 
+    .gender-equality-editor2 .cancel-button2, 
+    .gender-equality-editor2 .back-button2 {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+}
+
+/* Label styling */
+.editor-label2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    display: block;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+/* Tooltip styling */
+.tooltip2 {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #eaeaea;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.9rem;
+    position: absolute;
+    z-index: 1;
+    bottom: 25px;
+    left: 10%;
+    width: 200px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show tooltip on hover */
+.editor-label2:hover .tooltip2 {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Optional: Tooltip arrow styling */
+.tooltip2::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #6c757d transparent transparent transparent;
+}
+
+/* Editor container */
+.gender-equality-editor2 .editor-container2 {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
+    font-family: 'Arial', sans-serif; /* Font family for the editor */
+}
+
+/* Heading */
+.gender-equality-editor2 .editor-heading2 {
+    color: #f36f91;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Georgia', serif; /* Font family for the heading */
+}
+
+/* Editor form */
+.gender-equality-editor2 .editor-form2 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.gender-equality-editor2 .editor-label2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #3d3d3d; /* Dark grey color for labels */
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family: 'Verdana', sans-serif; /* Font family for labels */
+}
+
+/* Text area */
+.gender-equality-editor2  {
+    font-size: 0.9rem;
+    color: #201d1d; /* Dark color for general text */
+    margin-left: 5px;
+    font-family: 'Verdana', sans-serif; /* Font family for general text */
+}
+
+/* Text area styling */
+.gender-equality-editor2 .editor-textarea2 {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333; /* Dark text color */
+    resize: vertical;
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for textarea */
+}
+
+
+/* Submit and Cancel buttons */
+.gender-equality-editor2 .submit-button2,
+.gender-equality-editor2 .cancel-button2 {
+    font-size: 1.1rem;
+    font-family: 'Arial', sans-serif; /* Font family for buttons */
+    color: rgb(255, 255, 255);
+}
+
+.gender-equality-editor2 .cancel-button2{
+    color: #201d1d;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.gender-equality-editor2 .cancel-button2:hover{
+    color: #fff5f5;
+}
+
+/* Error message */
+.gender-equality-editor2 .error-message2 {
+    color: #f04e6c;
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Font family for error message */
+}
+
+/* Suggested text container */
+.gender-equality-editor2 .suggested-text-container2 {
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif; /* Font family for suggested text container */
+}
+
+/* Suggested text heading */
+.gender-equality-editor2 .suggested-text-heading2 {
+    color: #f36f91;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Georgia', serif; /* Font family for suggested text heading */
+}
+
+/* Suggested text content */
+.gender-equality-editor2 .suggested-text-content2 pre {
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #b5a3a3; /* Light grey color for suggested text */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for preformatted text */
+}
+
+/* Back button */
+.gender-equality-editor2 .back-button2 {
+    background-color: #f36f91;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Font family for back button */
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+    .gender-equality-editor2 .editor-container2, 
+    .gender-equality-editor2 .suggested-text-container2 {
+        padding: 15px;
+        margin: 20px;
+    }
+  
+    .gender-equality-editor2 .submit-button2, 
+    .gender-equality-editor2 .cancel-button2, 
+    .gender-equality-editor2 .back-button2 {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+}

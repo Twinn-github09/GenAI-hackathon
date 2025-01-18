@@ -1,0 +1,63 @@
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .feedback-textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  
+  .feedback-textarea:focus {
+    outline: none;
+    border-color: #5b9bd5;
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
+  .submit-button:active {
+    background-color: #388e3c;
+  }
+  
+  @media (max-width: 768px) {
+    .feedback-form {
+      padding: 15px;
+    }
+  
+    .feedback-textarea {
+      font-size: 0.9rem;
+    }
+  
+    .submit-button {
+      font-size: 0.9rem;
+    }
+  }
+  

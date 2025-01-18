@@ -1,0 +1,471 @@
+/* Form Styling */
+.form-container1 {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  width: 60%;
+  margin:auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.8);
+  transition: all 0.3s ease;
+  max-height: 900px;
+  position: fixed;
+  margin-left: 18%;
+}
+
+.form-container1:hover {
+  transform: scale(1.03);
+}
+
+.form-heading1 {
+  font-size: 32px;
+  color: #f75f78;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.form-heading1:hover {
+  color: #ff80ab;
+}
+
+/* Input Field Styling */
+.form-input1 {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border: 2px solid #f1d1f3;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.form-input1:focus {
+  transform: translateY(-2px) scale(1.02);
+  border-color: #ff80ab;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+}
+
+.form-input1::after {
+  content: '×';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #d656f3;
+  cursor: pointer;
+}
+
+
+.form-input1::placeholder {
+  color: #7a2b8b;
+}
+
+/* Button Styling */
+.submit1-button, .cancel-button1 {
+  width: 150px;
+  padding: 15px;
+  font-size: 18px;
+  background: linear-gradient(135deg, #ff4081, #e5b2f0);
+  color: #fffaff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+  transition: all 0.4s ease;
+}
+
+.submit1-button:hover, .cancel-button1:hover {
+  background: linear-gradient(135deg, #db94eb, #ff4081);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+  transform: scale(1.05);
+}
+
+.submit1-button {
+  margin-top: 20px;
+
+}
+
+.cancel-button1 {
+  margin-top: 20px;
+ 
+ 
+ 
+}
+
+.submit1-button:focus, .cancel-button1:focus {
+  outline: 3px solid #ff80ab;
+}
+
+/* Error Message */
+.error-message1 {
+  color: #ff0000;
+  font-size: 16px;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Suggestions Styling */
+/* Suggestions Styling */
+.suggestions1 ul {
+  list-style: none;
+  padding: 0;
+}
+
+.suggestions1 li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f1d1f3;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  /* Initial shadow for subtle floating effect */
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.1);
+}
+
+.suggestions1 li:hover {
+  background-color: #ff80ab;
+  transform: translateY(-5px); /* Slight upward movement */
+  box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3); /* Enhanced shadow for floating effect */
+  filter: brightness(1.1); /* Slightly brighter when hovered */
+}
+
+.suggestions1 li:active {
+  transform: translateY(2px); /* Slight downward movement when clicked */
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.1); /* Return to normal shadow */
+}
+
+/* Suggestions Styling */
+.suggestions1 ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 10px; /* Spacing between items */
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row by default */
+}
+
+.suggestions1 li {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #f1d1f3;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+  /* Initial shadow for subtle floating effect */
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.1);
+}
+
+.suggestions1 li:hover {
+  background-color: #ff80ab;
+  transform: translateY(-5px); /* Slight upward movement */
+  box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3); /* Enhanced shadow for floating effect */
+  filter: brightness(1.1); /* Slightly brighter when hovered */
+}
+
+.suggestions1 li:active {
+  transform: translateY(2px); /* Slight downward movement when clicked */
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.1); /* Return to normal shadow */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .suggestions1 ul {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .suggestions1 ul {
+    grid-template-columns: 1fr; /* 1 item per row on small screens */
+  }
+}
+
+
+.suggestions1 h4{
+  font-size: 18px;
+}
+
+.tooltip-label1 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #7a2b8b;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tooltip-label1:hover {
+  color: #ff80ab;
+}
+
+/* Form Container for Mobile Devices */
+@media (max-width: 768px) {
+  .form-input1 {
+    font-size: 16px;
+  }
+  
+  .submit1-button, .cancel-button1 {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container1 {
+    padding: 15px;
+  }
+  
+  .form-input1 {
+    font-size: 14px;
+    padding: 12px;
+  }
+  
+  .submit1-button, .cancel-button1 {
+    font-size: 16px;
+  }
+}
+
+
+.form-actions1{
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 50% 50%;
+  align-items: center;
+}
+.form-actions1 {
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensures the container spans the full width */
+}
+
+.form-actions1 button {
+  width: 30%; /* Makes buttons take up equal width */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.form-actions1 button:first-child {
+  margin-right: 5%; /* Adds space between the buttons */
+}
+
+.form-actions1 button:hover {
+  background-color: #ff80ab; /* Example hover effect */
+  transform: translateY(-2px); /* Slightly raise the button */
+}
+
+.form-actions1 button:active {
+  transform: translateY(1px); /* Button presses down when clicked */
+}
+
+/* Tooltip Label */
+.tooltip-label1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9839ad;
+  margin-bottom: 10px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.tooltip-label1:hover {
+  color: #ff80ab;
+}
+
+/* Tooltip Styling */
+.tooltip1 {
+  visibility: hidden;
+  opacity: 0;
+  width: 200px;
+  background-color: #db90c1;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* Position above the label */
+  left: 50%;
+  margin-left: -100px; /* Offset to center the tooltip */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip on Hover */
+.tooltip-label1:hover .tooltip1 {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Glass Effect Container */
+.results-container1 {
+  background: rgba(255, 255, 255, 0.1); /* Slight white background */
+  backdrop-filter: blur(10px); /* Glass blur effect */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto;
+  max-height: 600px; /* Allow scrolling if content overflows */
+  color: #fff;
+  font-family: 'Helvetica', sans-serif;
+}
+
+/* Title Styling */
+.results-heading1 {
+  font-size: 1.5rem;
+  color: #e91e63; /* Elegant pinkish tone */
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Results Content */
+.results-content1 {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  margin-bottom: 20px;
+  text-align: justify;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Back Button Styling */
+.back-button1 {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #e91e63; /* Elegant pink color */
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button1:hover {
+  background-color: #c2185b; /* Darker pink on hover */
+}
+
+.back-button1:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
+}
+
+/* Main Container */
+.results-container1 {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Glassy blur effect */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  color: #310732;
+  font-family: 'Arial', sans-serif;
+  overflow-y: auto;
+  max-height: 600px;
+  text-align: center; /* Allow scrolling if content is long */
+}
+
+/* Heading Styles */
+.results-heading1 {
+  font-size: 2rem;
+  color: #e91e63; /* Elegant pinkish tone */
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Section Headers */
+h2 {
+  font-size: 1.6rem;
+  color: #fc1b6a; /* Soft pinkish shade */
+  margin-bottom: 20px;
+  
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: #ea4780; /* Soft pinkish shade */
+  margin-bottom: 10px;
+}
+
+/* Body Content */
+.results-content1 {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #292525;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+
+
+/* Bullet Points */
+ul {
+  margin-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+
+/* Back Button */
+.back-button1 {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #e91e63;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button1:hover {
+  background-color: rgba(244, 21, 144, 0.2);
+  color: #7a2b8b;
+}
+
+.back-button1:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(233, 21, 244, 0.845);
+}
