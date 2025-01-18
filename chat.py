@@ -1,5 +1,5 @@
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template ,send_file
 from groq import Groq
 import os
 from dotenv import load_dotenv
@@ -18,6 +18,14 @@ import base64
 from PIL import Image
 import io
 from google.generativeai import GenerativeModel
+from serpapi.google_search import GoogleSearch
+import json
+from urllib.parse import quote_plus
+import markdown
+from docx import Document
+from docx.shared import Pt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+import re
 
 # Load environment variables
 load_dotenv()
@@ -55,7 +63,7 @@ Keep responses clear, accurate, and professionally formatted.'''
 # RAG Setup Functions
 
 
-def load_vector_store(persist_directory="./chroma_db_final"):
+def load_vector_store(persist_directory="./chroma_db_final_db"):
     embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     vector_store = Chroma(persist_directory=persist_directory,
                           embedding_function=embeddings)
@@ -151,26 +159,30 @@ def extract_case_content(case_url):
         return str(e)
 
 
+def truncate_to_token_limit(text, max_tokens=25000):
+
+    encoding = tiktoken.get_encoding("cl100k_base")
+    tokens = encoding.encode(text)
+    print(tokens)
+    if len(tokens) > max_tokens:
+        tokens = tokens[:max_tokens]
+    return encoding.decode(tokens)
+
 def extract_relevant_sections(case_text):
-    """Extract the most relevant parts of the case text to reduce token count."""
-    # Split into paragraphs
+
     paragraphs = case_text.split('\n')
     
-    # Keep introduction (first few paragraphs) and conclusion (last few paragraphs)
     intro_length = min(7, len(paragraphs))
     outro_length = min(7, len(paragraphs))
     
-    relevant_text = '\n'.join(
-        paragraphs[:intro_length] +  # Introduction
-        ['\n... [middle section summarized] ...\n'] +  # Indicate truncation
-        paragraphs[-outro_length:]  # Conclusion
-    )
-    
+    relevant_text = '\n'.join(paragraphs[:intro_length] + paragraphs[-outro_length:] )
+    print(relevant_text)
     return relevant_text
 
 def generate_summary_and_advice(case_text):
 
     relevant_text = extract_relevant_sections(case_text)
+    
     messages = [
         {
             "role": "system",
@@ -186,7 +198,7 @@ def generate_summary_and_advice(case_text):
             ## Outcome & Implications
             - (Main outcome and implications)"""
         },
-        {"role": "user", "content": case_text}
+        {"role": "user", "content": relevant_text}
     ]
 
     try:
@@ -240,7 +252,7 @@ def chat():
         greetings = {"hi", "hii", "hello", "hey", "hola", "namaste"}
         if user_prompt in greetings:
             return jsonify({"main_response": "Welcome to the Legal Advisor Chatbot! How can I assist you today?", "related_cases": []}), 200
-        # Input validation
+
         if not isinstance(user_prompt, str) or not user_prompt.strip():
             return jsonify({"error": "Invalid user prompt"}), 400
 
@@ -421,6 +433,122 @@ def process_image():
         })
 
 
+
+def convert_markdown_to_docx(markdown_text):
+    doc = Document()
+    
+    # Parse markdown content
+    lines = markdown_text.split('\n')
+    current_list = []
+    list_level = 0
+    
+    for line in lines:
+        # Handle headers
+        if line.startswith('#'):
+            level = len(re.match(r'^#+', line).group())
+            text = line.lstrip('#').strip()
+            paragraph = doc.add_paragraph()
+            run = paragraph.add_run(text)
+            run.bold = True
+            run.font.size = Pt(16 - level)  # Decrease size for deeper headers
+            
+        # Handle bullet points
+        elif line.strip().startswith('- '):
+            text = line.strip()[2:]
+            paragraph = doc.add_paragraph(text)
+            paragraph.style = 'List Bullet'
+            
+        # Handle numbered lists
+        elif re.match(r'^\d+\.', line.strip()):
+            text = re.sub(r'^\d+\.\s*', '', line.strip())
+            paragraph = doc.add_paragraph(text)
+            paragraph.style = 'List Number'
+            
+        # Handle bold text
+        elif '**' in line:
+            paragraph = doc.add_paragraph()
+            parts = re.split(r'(\*\*.*?\*\*)', line)
+            for part in parts:
+                if part.startswith('**') and part.endswith('**'):
+                    run = paragraph.add_run(part[2:-2])
+                    run.bold = True
+                else:
+                    paragraph.add_run(part)
+                    
+        # Regular text
+        else:
+            doc.add_paragraph(line)
+    
+    return doc
+
+
+def analyze_case_probability(case_details):
+    try:
+        # Format search query
+        search_query = f"success rate in cases similar to {case_details} India legal judgments"
+        encoded_query = quote_plus(search_query)
+        
+        # Use SerpAPI to get search results
+        search = GoogleSearch({
+            "q": encoded_query,
+            "api_key": os.getenv("SERPAPI_API_KEY"),
+            "num": 10  # Number of results to analyze
+        })
+        results = search.get_dict()
+        
+        # Extract relevant search results
+        organic_results = results.get("organic_results", [])
+        search_snippets = [result.get("snippet", "") for result in organic_results]
+        
+        # Combine all search results for analysis
+        combined_text = "\n".join(search_snippets)
+        print(combined_text)
+        # Use Groq to analyze the probability
+        messages = [
+            {
+                 "role": "system",
+                "content": """Analyze the provided case summaries to determine:
+                - Probability of winning based on precedents
+                - Key factors and challenges
+                - Suggestions for improvement
+                
+                Return the response in this format:
+                {
+                    "success_probability": "X%",
+                    "confidence_level": "High/Medium/Low",
+                    "key_factors": ["factor1", "factor2", ...],
+                    "challenges": ["challenge1", "challenge2", ...],
+                    "recommendation": "brief recommendation"
+                }
+                """
+            },
+            {
+                "role": "user",
+                "content": f"Case Details: {case_details}\n\nSimilar Cases:\n{combined_text}"
+            }
+        ]
+        
+        response = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=messages
+        )
+        print("---------------")
+        print(response)
+        # Parse the response
+        analysis = response.choices[0].message.content
+        print(analysis)
+        return analysis
+        
+    except Exception as e:
+        print(f"Error in case analysis: {str(e)}")
+        return {
+            "success_probability": "Unknown",
+            "confidence_level": "Low",
+            "key_factors": ["Insufficient data for analysis"],
+            "challenges": ["Unable to analyze similar cases"],
+            "recommendation": "Consult with a legal professional for detailed analysis"
+        }
+        
 @app.route('/get-help' ,methods=['POST'])
 @cross_origin()
 def handle_help():
@@ -431,6 +559,7 @@ def handle_help():
 
     user_prompt = data['user_prompt']
     print(user_prompt)
+    case_analysis = analyze_case_probability(user_prompt)
     messages = [
                 {"role": "user", "content": f"""
                  Case details : {user_prompt}
@@ -473,9 +602,18 @@ def handle_help():
                 - Advise if legal assistance is recommended.
 
                 Ensure the template is adaptable to various legal scenarios (e.g., civil cases, criminal cases, appeals).
-                Please make sure to fill possible entries like name and so.
+                The output should be with a include name address and other details of the user in the template.
                 Just give me the template donot add extra message, like "here is your answer etc..."
-                                    
+                At last
+                The template should include standard legal formatting and also highlight:
+                based on {case_analysis}
+                include success rate
+                1. The strength of similar precedents 
+                2. Key factors that support the case
+                3. Try incluing all kind of postive and negative factors where user face in the case
+                
+                Provide the response in Markdown format with all standard petition sections.
+                Include specific sections that address the identified success factors and challenges.
                 """}
             ]
 
@@ -483,16 +621,214 @@ def handle_help():
                 model="llama3-8b-8192",
                 messages=messages
             )
-    print(groq_response)
+    markdown_content = groq_response.choices[0].message.content
+    
+    doc = convert_markdown_to_docx(markdown_content)
+    
+    docx_buffer = io.BytesIO()
+    doc.save(docx_buffer)
+    docx_buffer.seek(0)
+    
+    import base64
+    docx_base64 = base64.b64encode(docx_buffer.getvalue()).decode()
     
     response_data = {
-            "main_response": groq_response.choices[0].message.content,
-            "related_cases": []
-        }
+        "main_response": markdown_content,
+        "docx_content": docx_base64,
+        "related_cases": []
+    }
 
     return jsonify(response_data), 200
     
+@app.route('/download-docx', methods=['POST'])
+def download_docx():
+    data = request.json
+    if not data or 'markdown_content' not in data:
+        return jsonify({"error": "Markdown content is required."}), 400
+        
+    doc = convert_markdown_to_docx(data['markdown_content'])
     
+    # Save to bytes buffer
+    docx_buffer = io.BytesIO()
+    doc.save(docx_buffer)
+    docx_buffer.seek(0)
+    
+    return send_file(
+        docx_buffer,
+        mimetype='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        as_attachment=True,
+        download_name='petition_template.docx'
+    )
+
+
+@app.route('/explain-legal-term', methods=['POST'])
+@cross_origin()
+def explain_legal_term():
+    # Extract the user input
+    data = request.json
+    if not data or 'user_prompt' not in data:
+        return jsonify({"error": "User prompt is required."}), 400
+
+    user_prompt = data['user_prompt']
+    print(f"User prompt received: {user_prompt}")
+
+    # Prepare messages for the AI model
+    messages = [
+        {"role": "user", "content": f"""
+        The user wants to understand the legal term: **{user_prompt}**.
+        Your task is to provide a clear, concise, and detailed explanation of the term. Ensure the explanation is understandable to someone without a legal background and includes the following sections:
+
+        # Explanation of {user_prompt}
+
+        ## Definition
+        - Provide a formal definition of the term.
+        - Highlight its importance in the legal context.
+
+        ## Legal Context and Usage
+        - Explain where this term is typically used (e.g., contracts, court cases, statutes).
+        - Include relevant examples to illustrate its application.
+
+        ## Related Legal Terms
+        - Mention any terms closely related or commonly associated with the provided term.
+        - Briefly explain how they are connected.
+
+        ## Practical Implications
+        - Describe why it’s important for someone to understand this term.
+        - Mention any common misconceptions or pitfalls associated with it.
+
+        ## Additional Notes (if applicable)
+        - Add any historical background, legal doctrines, or notable cases involving this term.
+        - Include references to relevant laws or legal texts if necessary.
+
+        Ensure the explanation is detailed yet accessible. Avoid using unnecessary legal jargon unless it's essential, and explain it where used. Provide the output in Markdown format.
+        """}
+    ]
+
+    # Query the AI model
+    try:
+        groq_response = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=messages
+        )
+        print(f"AI response: {groq_response}")
+
+        # Prepare response data
+        response_data = {
+            "main_response": groq_response.choices[0].message.content,
+        }
+        return jsonify(response_data), 200
+
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return jsonify({"error": "An error occurred while processing the request."}), 500
+
+
+@app.route('/gender-neutral-language-suggestions', methods=['POST'])
+@cross_origin()
+def gender_neutral_language_suggestions():
+    # Extract the user input
+    data = request.json
+    if not data or 'user_text' not in data:
+        return jsonify({"error": "Text input is required."}), 400
+
+    user_text = data['user_text']
+    print(f"User text received: {user_text}")
+
+    # Prepare messages for the AI model
+    messages = [
+        {"role": "user", "content": f"""
+        The user wants to ensure gender-neutral language in their text: **{user_text}**.
+        Your task is to detect gendered language and suggest neutral alternatives. 
+
+        # Gender-Neutral Language Suggestions
+
+        ## Gendered Terms Detected
+        - Identify any gendered terms or phrases (e.g., "he", "she", "chairman") in the text.
+        - Suggest gender-neutral alternatives for each term (e.g., "they", "chairperson").
+
+        ## Suggestions Format
+        - Return the list of detected gendered terms and their neutral replacements.
+        - Provide the new text with the suggested replacements integrated.
+
+        ## Example:
+        - Original: "The chairman will make his decision soon."
+        - Suggested: "The chairperson will make their decision soon."
+
+        Ensure the suggestions are clear, and keep the integrity of the original meaning while avoiding gender-specific language.
+        """}
+    ]
+
+    # Query the AI model
+    try:
+        groq_response = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=messages
+        )
+        print(f"AI response: {groq_response}")
+
+        # Prepare response data
+        response_data = {
+            "main_response": groq_response.choices[0].message.content,
+        }
+        return jsonify(response_data), 200
+
+    except Exception as e:
+        print(f"Error occurred: {e}")
+        return jsonify({"error": "An error occurred while processing the request."}), 500
+    
+    
+@app.route('/nearby-lawyers', methods=['POST'])
+@cross_origin()
+def get_nearby_lawyers():
+    try:
+        
+        data = request.json
+        print(data)
+        latitude = data.get('latitude')
+        longitude = data.get('longitude')
+        
+        url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
+        
+        params = {
+            'location': f'{latitude},{longitude}',
+            'radius': '5000',  # 5km radius
+            'type': 'lawyer',
+            'keyword': 'lawyer law firm attorney',
+            'key': 'AIzaSyDrGnW9kUQQiNWvVk_HrqD5lVvc3I90334'
+        }
+        
+        response = requests.get(url, params=params)
+        results = response.json()
+        
+        lawyers = []
+        for place in results.get('results', []):
+            lawyer = {
+                'name': place.get('name'),
+                'address': place.get('vicinity'),
+                'rating': place.get('rating'),
+                'total_ratings': place.get('user_ratings_total'),
+                'place_id': place.get('place_id'),
+                'location': place.get('geometry', {}).get('location', {}),
+                'open_now': place.get('opening_hours', {}).get('open_now'),
+            }
+            lawyers.append(lawyer)
+        
+        lawyers.sort(key=lambda x: (x['rating'] if x['rating'] is not None else 0), reverse=True)
+       
+
+
+       
+        return jsonify({
+            'status': 'success',
+            'data': lawyers
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
+        
 @app.route('/')
 def home():
     return render_template('bot.html')
